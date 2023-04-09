@@ -124,16 +124,127 @@ _
 _
 */
 
-const N = 5;
 
-for (let i = 1; i <= N; i++) { 
-    let res = ''
-    if (i % 2 === 1) {
-            res = '_'
-    } else {
-        for (let j = 1; j <= N; j++){
-            res+='*'
+const dots_and_dashes = (N) => {
+    for (let i = 1; i <= N; i++) { 
+        let res = ''
+        if (i % 2 === 1) {
+                res = '_'
+        } else {
+            for (let j = 1; j <= N; j++){
+                res+='*'
+            }
         }
+        console.log(res)
     }
-    console.log(res)
 }
+
+dots_and_dashes(5)
+
+
+
+/*
+? Dots and Dashes ||
+
+You are given a number stored in a variable with the name N. Print the required pattern, such that for all numbers in the range [1, N] including N, if the number is odd, print a N dashes(_), else print N starts(*) without space on a new line.
+
+Input: 5
+Output:
+_____
+******
+_____
+******
+_
+*/
+
+const dots_and_dashesII = (N) => {
+    for (let i = 1; i <= N; i++) { 
+        let res = ''
+            for (let j = 1; j <= N; j++){
+                if (i % 2 == 1) {
+                    res+= '_'
+                } else {
+                    res+='*'
+                }
+            }
+        console.log(res)
+    }
+}
+
+dots_and_dashesII(5)
+
+
+/*
+? Pattern of Inverted L
+
+You are given a  number stored in a variable with the name, N. Print the pattern as shown below, according to the value in N.
+
+For example, consider the value stored in N = 5. Then, the required output will be:
+
+* * * * *
+*
+*
+*
+*
+
+*/
+
+const invertedL = (N) => {
+    for (let i = 0; i < N; i++){
+        let res = ''
+        for (let j = 0; j < N; j++){
+            if (j === 0 || i === 0) {
+                res+='* '
+            }
+        }
+        console.log(res)
+    }
+}
+
+invertedL(5)
+
+
+/*
+? Reverse the value
+
+You are given a number stored in a variable with the num and you have to reverse that number.
+
+For example, the number stored in the variable num = 971, then the required output will be 179.
+
+Note: The number does not contain the leading zeros
+*/
+
+const Num1 = 971;
+
+console.log(Num1.toString().split('').reverse().join(''))
+
+
+/*
+? Two Primes
+
+You are given two numbers, stored in variables with the following names a, b. If both the numbers are prime, print 'True' else print 'False'.
+
+
+Input: 11 17
+Output: true
+*/
+
+
+const [a1, b1] = [11, 17]
+
+
+const primeNumber = (n) => {
+    if (n < 10) {
+      if (n === 2 || n === 3 || n === 5 || n === 7) {
+        return true;
+      }
+        return false;
+    } else {
+      if (n % 2 === 0 || n % 3 === 0 || n % 5 === 0 || n % 7 === 0) {
+        return false;
+      }
+      return true;
+    }
+};
+  
+console.log(primeNumber(a1) && primeNumber(b1) ? 'True' : 'False')
