@@ -1,54 +1,32 @@
 /*
-? Small and Largest of all
+? Breaking a Record
 
-Given an array which has N integers. You need to print smallest and largest element present in the array each on the new lines.
+You are provided the highest runs N, ever scored in a cricket match till now, which is current highest record.
 
-Input: 4
--2 0 8 4
+You are also given current runs, M scored by Sachin Tendulkar in a today's match.
 
-Output: -2
-8
+If Sachin breaks current record in that match, print 'Broken'.
+If Sachin could not break that record, print 'Not Yet'.
+If Sachin score exactly as current highest record, print 'Wao'.
+
+Input: 240 200
+Output: Not Yet
 */
 
-const [n, arr] = [4, [-2, 0, 8, 4]]
+const [n, m] = [240, 200]
 
-console.log(Math.min(...arr) + '\n' + Math.max(...arr));
+console.log(m > n ? 'Broken' : m < n ? 'Not Yet' : 'Wao');
 
 
 /*
-? Average of all
+? Equal to 42 or not
 
-You are given an array which has N integers. Write a program to print the ceil of 'average of integers' pregent in the array.
+You are given an array of N integers. You need to print 'Yes' if 42 is present in that array, else print 'No'.
 
-NOTE: The ceil value of the given whole number k is the smallest integer value greater or equal to a k.
-
-For example:
-
-If the value of K = 3.679, the ceil value of K is 4.
-If the value of K = 5, the ceil value of K is 5.
-
-Input: 4
-2 5 0 9
-
-Output: 4
+Input: 5, [3, 7, 0, 9, 8]
+Output: No
 */
 
-const [n1, arr1] = [4, [2, 5, 0, 9]]
+const [size, arr] = [5, [3, 7, 0, 9, 8]]
 
-console.log(Math.ceil(arr1.reduce((a, c) => a + c, 0) / n1))
-
-
-/*
-? Battle of Odd and Even
-
-You are given an array which has N integers. You need to print 'Odd', if the sum of all odd numbers present in the array is greater then sum of all even numbers present in the array, or else print 'Even'
-
-Input:4
-1 2 3 4
-
-Output: Even
-*/
-
-const [n2, arr2] = [4, [1, 2, 3, 4]]
-
-console.log(arr2.filter(e => e % 2 === 1).reduce((a, c) => a+c, 0) > arr2.filter(e => e % 2 === 0).reduce((a, c) => a+c, 0) ? 'Odd' : 'Even')
+console.log(arr.includes(42) ? 'Yes' : 'No');
