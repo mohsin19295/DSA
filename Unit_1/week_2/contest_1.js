@@ -10,14 +10,14 @@ Output: Caught
 */
 
 function catch420(n) {
-    n = n.toString();
-    for (let i = 0; i < n.length; i++) { 
-        if (n[i] == 4 && n[i + 1] == 2 && n[i + 2] == 0) return 'Caught';
-    }
-    return 'Escaped';
+  n = n.toString();
+  for (let i = 0; i < n.length; i++) {
+    if (n[i] == 4 && n[i + 1] == 2 && n[i + 2] == 0) return "Caught";
+  }
+  return "Escaped";
 }
 
-console.log(catch420(97420))
+console.log(catch420(97420));
 
 /*
 ? Count consonants
@@ -30,11 +30,16 @@ Input: mohammadmohsin
 Output: 9
 */
 
+const str = "mohammadmohsin";
 
-const str = 'mohammadmohsin'
-
-console.log(str.length - str.split('').filter(e => e === 'a' || e === 'e' || e === 'i' || e === 'o' || e === 'u').length)
-
+console.log(
+  str.length -
+    str
+      .split("")
+      .filter(
+        (e) => e === "a" || e === "e" || e === "i" || e === "o" || e === "u"
+      ).length
+);
 
 /*
 ? Sentence reversal
@@ -47,10 +52,9 @@ Input: A Transformation in education
 Output: education in Transformation A
 */
 
-const s = 'A Transformation in education'
+const s = "A Transformation in education";
 
-console.log(s.split(' ').reverse().join(' '))
-
+console.log(s.split(" ").reverse().join(" "));
 
 /*
 ? Longest Increasing Subarray
@@ -77,3 +81,29 @@ Input: 2
 Output: 1
 3
 */
+
+function longestIncSubArr(n, arr) {
+  let max = 0;
+  for (let i = 0; i < n; i++) {
+    for (let j = i; j < arr.length; j++) {
+      let res = [];
+      for (let k = i; k <= j; k++) {
+        res.push(arr[k]);
+      }
+
+      const result = res.every((currentValue, index, array) => {
+        if (index === 0) return true;
+        return currentValue > array[index - 1];
+      });
+
+      if (result) {
+        if (max < res.length) {
+          max = res.length;
+        }
+      }
+    }
+  }
+  return max;
+}
+
+console.log(longestIncSubArr(6, [1, 2, 1, 2, 3, 1]));
