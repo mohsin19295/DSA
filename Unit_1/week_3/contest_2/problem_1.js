@@ -18,47 +18,53 @@ Print Tie/x/o depending on the end result of the game.
 */
 
 function runProgram(input) {
-  input = input.split('\n')
-  let mat = []
+  input = input.split("\n");
+  let mat = [];
 
-  for (let i = 0; i < input.length; i++){
-    mat.push(input[i].split(' '))
+  for (let i = 0; i < input.length; i++) {
+    mat.push(input[i].split(" "));
   }
-  
-console.log(checkFun(mat))
-  
+
+  console.log(checkFun(mat));
 }
 
-
 const checkFun = (mat) => {
-  let leftDiagonal = []
-  let rightDiagonal = []
-  
-  for (let i = 0; i < mat.length; i++) { 
-     horizontal = []
-     vertical = []
-    for (let j = 0; j < mat.length; j++){
-      horizontal.push(mat[i][j])
-      vertical.push(mat[j][i])
+  let [leftDiagonal, rightDiagonal] = [[], []];
+
+  for (let i = 0; i < mat.length; i++) {
+    [horizontal , vertical] = [[], []]; 
+    for (let j = 0; j < mat.length; j++) {
+      horizontal.push(mat[i][j]);
+      vertical.push(mat[j][i]);
       if (i === j) {
-        leftDiagonal.push(mat[i][j])
+        leftDiagonal.push(mat[i][j]);
       }
-      if (i + j === mat.length - 1) { 
-        rightDiagonal.push(mat[i][j])
+      if (i + j === mat.length - 1) {
+        rightDiagonal.push(mat[i][j]);
       }
     }
 
-    if (vertical.every(e => e === 'x') || horizontal.every(e => e === 'x')) return 'x'
-    
-    if (vertical.every(e => e === 'o') || horizontal.every(e => e === 'o')) return 'o'
+    if (vertical.every((e) => e === "x") || horizontal.every((e) => e === "x"))
+      return "x";
+
+    if (vertical.every((e) => e === "o") || horizontal.every((e) => e === "o"))
+      return "o";
   }
 
-  if (leftDiagonal.every(e => e === 'x') || rightDiagonal.every(e => e === 'x')) return 'x'
+  if (
+    leftDiagonal.every((e) => e === "x") ||
+    rightDiagonal.every((e) => e === "x")
+  )
+    return "x";
 
- if (leftDiagonal.every(e => e === 'o') || rightDiagonal.every(e => e === 'o')) return 'o'
+  if (
+    leftDiagonal.every((e) => e === "o") ||
+    rightDiagonal.every((e) => e === "o")
+  )
+    return "o";
 
-  return 'Tie'
-}
+  return "Tie";
+};
 if (process.env.USERNAME === "ubuntu") {
   runProgram(`x o x
 o x x
