@@ -11,7 +11,7 @@ Next n lines: Each line contains m characters which contains lower-case English 
 *Output Format:
 Print the number of times the word "saba" appears in the grid.
 
-! Check image to understand
+! Check image to understand (problem_1.png)
 
 Input:5 5
 safer
