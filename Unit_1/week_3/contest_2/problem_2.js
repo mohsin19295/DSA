@@ -76,11 +76,12 @@ const findIndexes = (mat, n, m, k) => {
     }
 }
 if (process.env.USERNAME === "ubuntu") {
-  runProgram(`3 3
-1 2 3
-4 5 6
-7 8 9
-6`);
+  runProgram(`4 4
+1 2 3 4
+5 6 7 8
+9 10 11 12
+13 14 15 16
+11`);
 } else {
   process.stdin.resume();
   process.stdin.setEncoding("ascii");
