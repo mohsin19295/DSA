@@ -5,12 +5,10 @@ You are given an array matrix of n rows and m columns which contains lower case 
 How many times does the phrase "saba" appear horizontally, vertically, and diagonally in the grid?
 
 *Input Format:
-
 First line: Two integer n and m, where n denotes the number of rows and m denotes the number of columns in the grid.
 Next n lines: Each line contains m characters which contains lower-case English letters only.
 
 *Output Format:
-
 Print the number of times the word "saba" appears in the grid.
 
 ! Check image to understand
