@@ -2,7 +2,6 @@
 ? N Traversal
 
 You are given a matrix of size n x n. Find theNtraversal of the matrix. 
-
 ! Refer the following figure for better understanding (problem_1.png)
 
 *Input Format:
