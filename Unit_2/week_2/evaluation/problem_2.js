@@ -49,22 +49,22 @@ const spiralMat = (n, m, mat) => {
   while (count < n * m) {
     for (let i = top; i <= bottom && count < n * m; i++) {
       res += mat[i][left] + " ";
-      count++;
+        count++;
     }
     left++;
     for (let i = left; i <= right && count < n * m; i++) {
-      res += mat[bottom][i] + " ";
-      count++;
+        res += mat[bottom][i] + " ";
+        count++;
     }
     bottom--;
     for (let i = bottom; i >= top && count < n * m; i--) {
-      res += mat[i][right] + " ";
-      count++;
+        res += mat[i][right] + " ";
+        count++;
     }
     right--;
     for (let i = right; i >= left && count < n * m; i--) {
-      res += mat[top][i] + " ";
-      count++;
+        res += mat[top][i] + " ";
+        count++;
     }
     top++;
   }
