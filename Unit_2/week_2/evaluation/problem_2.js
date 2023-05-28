@@ -24,7 +24,8 @@ Input: 2
 7 8 9
 10 11 12
 
-Output: 
+Output: 1 5 9 10 11 12 8 4 3 2 6 7
+1 4 7 10 11 12 9 6 3 2 5 8
 */
 
 function runProgram(input) {

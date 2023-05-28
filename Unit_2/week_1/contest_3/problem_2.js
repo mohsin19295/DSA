@@ -12,7 +12,7 @@ Next n lines: Each line contains m characters which contain positive integers on
 *Output:
 Print the number of times the sums appear in the matrix.
 
-! Check image to understand (problem_2.png)
+! Refer the following figure for better understanding (problem_2.png)
 
 Input:3 3 6
 3 2 1
