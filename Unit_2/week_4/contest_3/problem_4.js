@@ -24,10 +24,18 @@ Output: -1, -1, -1, -1, 4, 24, 24, -1
 */
 
 function runProgram(input) {
-  input = input.split("\n")
-  const n = +input[0]
-  let arr = input[1].split(' ').map(Number)
-    
+  input = input.split("\n");
+  const n = +input[0];
+  let arr = input[1].split(" ").map(Number);
+
+  let [stack, res] = [[], []];
+
+  for (let i in arr) {
+    while (stack.length && stack[stack.length - 1] >= arr[i]) stack.pop();
+    res[i] = stack.length ? stack[stack.length - 1] : -1;
+    stack.push(arr[i]);
+  }
+  console.log(res.join(" "));
 }
 if (process.env.USERNAME === "ubuntu") {
   runProgram(`8
