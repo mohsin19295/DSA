@@ -45,9 +45,28 @@ function runProgram(input) {
       mat.push(input[line++].trim().split(" ").map(Number));
     }
 
-    console.log(mat, n, m);
+    distinctCount(mat, n, m);
   }
 }
+
+const distinctCount = (mat, n, m) => {
+  let map = new Map();
+
+  for (let i = 0; i < m; i++) {
+    map.set(mat[0][i], 1);
+  }
+
+  let count = 0;
+  for (let i = 1; i < n; i++) {
+    for (let j = 0; j < m; j++) {
+      if (map.has(mat[i][j]) && map.get(mat[i][j]) == i) {
+        map.set(mat[i][j], i + 1);
+        if (i == n - 1) count++;
+      }
+    }
+  }
+  console.log(count);
+};
 
 if (process.env.USERNAME === "ubuntu") {
   runProgram(`2
