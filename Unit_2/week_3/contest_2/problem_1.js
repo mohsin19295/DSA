@@ -42,8 +42,8 @@ function runProgram(input) {
     console.log(max)
 }
 if (process.env.USERNAME === "ubuntu") {
-  runProgram(`10 3
--1 -1 -2 1 -2 4 1 9 3 9`);
+  runProgram(`9 5
+-1 -1 -2 1 4 1 9 3 9`);
 } else {
   process.stdin.resume();
   process.stdin.setEncoding("ascii");
