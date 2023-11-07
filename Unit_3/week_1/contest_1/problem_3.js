@@ -1,4 +1,6 @@
 /*
+? Next Greater Element
+
 Given an array of N elements, find the next greater element for each element in the array, print -1 if it does not exits. Refer to the sample 1/O for better
 
 *Input Format:
