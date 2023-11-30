@@ -1,62 +1,30 @@
 /*
-? Follow the Knight
+? Power function - Recursive
 
-You are very good at playing chess since childhood and you knew the rules very much. You have a 10 X 10 chessboard and you want to explore all the possible squares on the board that the knight can be at in exactly N moves.It is placed at (i.j) coordinate initially. For a 10X10 chessboard (1,1) will be the top left corner and (10,10) will be the bottom right corner.
-
-! Refer the diagram, knight can move to any of the squares marked as X in 1 move (knight.jpg)
+Given two integers a and b, we need to find the value of a^b recursively.
+Expected Time Complexity - O(logb).
 
 *Input Format:
-Input will consist of three space seperated integers i,j and N
-
-*Constraints:
-N < 10
+The first line of the input contains two integers a and b (1 ≤ a ≤ 10) and (0 ≤ b ≤ 9).
 
 *Output Format:
-Print a single integer denoting the number of blocks on the chessboard that the knight can be at in exactly N moves.
+For each test case, print the answer: The value of a^b.
 
-Input: 3 3 1
-Output: 8
+Input: 2 4
+Output: 16
 */
 
 function runProgram(input) {
-  const [row, col, n] = input.split(" ").map(Number);
-  const board = new Array(10).fill(0).map(() => new Array(10).fill(0));
-
-  let count = 0;
-  const moves = [
-    [1, 2],
-    [-1, -2],
-    [-1, 2],
-    [1, -2],
-    [2, 1],
-    [-2, -1],
-    [-2, 1],
-    [2, -1],
-  ];
-
-  const followTheKnight = (board, row, col, n) => {
-    if (row < 0 || col < 0 || row > 9 || col > 9) {
-      return;
-    }
-
-    if (n === 0) {
-      if (board[row][col] !== 1) {
-        board[row][col] = 1;
-        count++;
-      }
-      return;
-    }
-
-    for (let i = 0; i < moves.length; i++) {
-      let [movedRow, movedCol] = moves[i];
-      followTheKnight(board, row + movedRow, col + movedCol, n - 1);
-    }
-  };
-  followTheKnight(board, row - 1, col - 1, n);
-  console.log(count);
+  const [a, b] = input.split(" ").map(Number);
+  console.log(powerOfRecursive(a, b));
 }
+
+const powerOfRecursive = (a, b) => {
+  if (b === 0) return 1;
+  return a * powerOfRecursive(a, b - 1);
+};
 if (process.env.USERNAME === "ubuntu") {
-  runProgram(`3 3 1`);
+  runProgram(`2 4`);
 } else {
   process.stdin.resume();
   process.stdin.setEncoding("ascii");
