@@ -3,14 +3,14 @@
 
 You'll be given a stack. You have to reverse the stack without using any inbuilt function or for and while loops. You have to reverse it by recursion only.
 
-*Input Format:
+*Input Format :
 First n lines will contain the stack of length n. You have to stop taking input when you find -1
 
-*Constraints:
+*Constraints :
 n <= 1000
 0 <= element of the stack <= 100000
 
-*Output Format:
+*Output Format :
 You have to display the reversed stack
 
 Input:1
