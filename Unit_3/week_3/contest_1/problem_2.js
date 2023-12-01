@@ -10,7 +10,7 @@ First n lines will contain the stack of length n. You have to stop taking input 
 n <= 1000
 0 <= element of the stack <= 100000
 
-*Output Format
+*Output Format:
 You have to display the reversed stack
 
 Input:1
