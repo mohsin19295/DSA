@@ -1,49 +1,89 @@
 /*
-? Dr. Strange and Possibilities
+? N Queens Variants
 
-Dr. Strange has n distinct integers from 1 to n. He uses his mind power and time stone to calculate all the possible subsets using the given n integers. Generate all the possible subsets.
+The n-queens puzzle is the problem of placing n queens on an NxN chessboard such that no two queens attack each other.
+Given an integer n, print the number of distinct solutions to the n-queens puzzle.
+
+! Refer the following figure for better understanding (nQueen.png)
 
 *Input Format:
-The first line of the input contains one integer n (1 ≤ n ≤ 10).
+The first line of the input contains one integer n (1 <= n <= 10).
 
-*Output
-Print each possible subset in a new line.
-Elements within the set must be in non-decreasing order. All the subsets must be distinct and sorted in ascending order or lexicographically. For an empty subset just print a blank line.
+*Output Format:
+Print the number of distinct solutions possible.
 
-Input: 3
-Output: 
-<EMPTY SPACE>
-1
-1 2
-1 2 3
-1 3
-2
-2 3
-3
+Input: 4
+Output: 2
+
+Input: 1
+Output:1
+
+*HINT:
+There are two distinct solutions to the 4-queens puzzle as shown below.
+[
+    [
+    _,Q,_,_ // Solution 1
+    _,_,_,Q
+    Q,_,_,_
+    _,_,Q,_
+    ],
+    [
+    _,_Q,_ // Solution 2
+    Q,_,_,_
+    _,_,_,Q
+    _,Q,_,_
+    ]
+]
+So count is 2
 */
 
 function runProgram(input) {
   const n = +input;
-  let arr = []
-  for (let i = 1; i <= n; i++){
-    arr.push(i)
-  }
-  const [newArr, cur] = [[], 0]
-  generateSubset(arr, newArr, cur)
-    
+  const board = new Array(n).fill(0).map(() => new Array(n).fill(0));
+  console.log(allPossibleCount(board));
 }
-const generateSubset = (arr, newArr, cur) => {
-  if(newArr.length >= 0) console.log(newArr.join(' '))
-  if (arr.length === cur) return;
 
-  for (let i = cur; i < arr.length; i++){
-    newArr.push(arr[i])
-    generateSubset(arr, newArr, i + 1);
-    newArr.pop()
+const isQueenSafe = (board, row, col) => {
+  // No need to check horizontally
+
+  // Vertically Check
+  for (let i = row - 1, j = col; i >= 0; i--) {
+    if (board[i][j] === 1) return false;
   }
-}
+
+  // upRight Diagonal
+  for (let i = row - 1, j = col + 1; i >= 0 && j < board.length; i--, j++) {
+    if (board[i][j] === 1) return false;
+  }
+
+  // upLeft Diagonal
+  for (let i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
+    if (board[i][j] === 1) return false;
+  }
+  return true;
+};
+
+const allPossibleCount = (board) => {
+  let count = 0;
+  const possibleWays = (board, row) => {
+    if (board.length === row) {
+      count++;
+      return;
+    }
+
+    for (let col = 0; col < board.length; col++) {
+      if (isQueenSafe(board, row, col)) {
+        board[row][col] = 1;
+        possibleWays(board, row + 1);
+        board[row][col] = 0;
+      }
+    }
+  };
+  possibleWays(board, 0);
+  return count;
+};
 if (process.env.USERNAME === "ubuntu") {
-  runProgram(`3`);
+  runProgram(`4`);
 } else {
   process.stdin.resume();
   process.stdin.setEncoding("ascii");

@@ -1,58 +1,75 @@
 /*
-? Recursive Bubble Sort
+? Generate Permutations
 
-You are given an array ofNunsorted numbers. Your task is to write BUBBLE SORT using RECURSION such that numbers present in the array get sorted.
-USING ANY OTHER ALGORITHM OR USING SORT FUNCTION WOULD LEAD TO DISQUALIFICATION.
+Given a collection of numbers, return all possible permutations.
+NOTE: No two entries in the permutation sequence should be the same.
+For the purpose of this problem, assume that all the numbers in the collection are unique.
+USING BUILT-IN LIBRARY FUNCTION TO PERMUTE WILL LEAD TO DISQUALIFICATION
 
 *Input Format:
-First line of input contains N
-Second line of input contains N numbers
+The first line of input contain an integer n-denoting the size of array
+The next line contain n distinct integers, A[1],A[2]…A[N]
 
 *Constraints:
-N < 500
+1<= n <=6
 
 *Output Format:
-Output the numbers given after sorting it in increasing order
+Print the permutations of numbers in new line seperated by space, also make sure the permutations are printed in sorted order that is "1 2 3" must come before "2 3 1". Print without quotes. See sample test case for better understanding.
 
-Input:5
-3 5 0 9 8
+Input: 3
+1 2 3
 
-Output: 0 3 5 8 9
+Output: 1 2 3
+1 3 2
+2 1 3
+2 3 1
+3 1 2
+3 2 1
 */
 
 function runProgram(input) {
-  input = input.split('\n');
+  input = input.split("\n");
   const n = +input[0];
-  const arr = input[1].split(' ').map(Number);
-  console.log(bubbleSort(arr, n).join(' '));
+  const arr = input[1].split(" ").map(Number);
+  let newArr = [];
+
+  generatePermutation(arr, 0, newArr);
+  newArr.sort();
+  for (let i = 0; i < newArr.length; i++) {
+    console.log(newArr[i].join(" "));
+  }
 }
 
-const bubbleSort = (arr, n) => {
-  if (n === 1) return arr;
-  for (let i = 0; i < n; i++) {
-    if (arr[i] > arr[i + 1]) {
-      [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
-    }
+const generatePermutation = (arr, cur, newArr) => {
+  if (arr.length === cur) {
+    newArr.push(arr.slice());
+    return;
   }
-  return bubbleSort(arr, n - 1);
+
+  for (let i = cur; i < arr.length; i++) {
+    [arr[i], arr[cur]] = [arr[cur], arr[i]];
+    generatePermutation(arr, cur + 1, newArr);
+    [arr[i], arr[cur]] = [arr[cur], arr[i]];
+  }
 };
-if (process.env.USERNAME === 'ubuntu') {
-  runProgram(`5
-3 5 0 9 8`);
+
+if (process.env.USERNAME === "ubuntu") {
+  runProgram(`3
+1 2 3`);
 } else {
   process.stdin.resume();
-  process.stdin.setEncoding('ascii');
-  let read = '';
-  process.stdin.on('data', function (input) {
+  process.stdin.setEncoding("ascii");
+  let read = "";
+  process.stdin.on("data", function (input) {
     read += input;
   });
-  process.stdin.on('end', function () {
-    read = read.replace(/\n$/, '');
-    read = read.replace(/\n$/, '');
+  process.stdin.on("end", function () {
+    read = read.replace(/\n$/, "");
+    read = read.replace(/\n$/, "");
     runProgram(read);
   });
-  process.on('SIGINT', function () {
-    read = read.replace(/\n$/, '');
+  process.on("SIGINT", function () {
+    read = read.replace(/\n$/, "");
     runProgram(read);
     process.exit(0);
   });
