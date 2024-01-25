@@ -1,3 +1,25 @@
+/*
+? Quickly Sort It
+
+You are given an array of N integers. Write QUICK SORT ALGORITHM to sort the numbers in ascending order
+DO NOT USE ANY BUILTIN FUNCTION TO SORT
+ALSO, YOU MUST NOT USE ANY OTHER ALGORITHM
+
+*Input Format:
+First line contains N
+Second line contains N space separated integers
+
+*Constraints:
+N < 1000
+
+*Output Format:
+Print the sorted numbers separated by space
+
+Input: 5
+3 5 0 9 8
+Output: 0 3 5 8 9
+*/
+
 function runProgram(input) {
     input = input.split('\n')
     const [n, arr] = [+input[0], input[1].split(' ').map(Number)]
