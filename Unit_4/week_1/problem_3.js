@@ -51,7 +51,7 @@ const upperBoundSearch = (arr, n, k) => {
     return i;
 }
 if (process.env.USERNAME === "ubuntu") {
-    runProgram(`7 70
+    runProgram(`7 7
 2 2 2 2 2 7 11`);
 } else {
     process.stdin.resume();
