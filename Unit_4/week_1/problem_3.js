@@ -36,7 +36,7 @@ function runProgram(input) {
 }
 
 const upperBoundSearch = (arr, n, k) => {
-    let [low, high] = [0, n - 1]
+    let [low, high, i] = [0, n - 1, -1]
     
     while (low <= high) {
         let mid = Math.floor(low + (high - low)/ 2)
@@ -44,13 +44,14 @@ const upperBoundSearch = (arr, n, k) => {
         if (arr[mid] <= k) {
             low = mid + 1
         } else {
+            i = mid
             high = mid -1
         }
     }
-    return low;
+    return i;
 }
 if (process.env.USERNAME === "ubuntu") {
-    runProgram(`7 7
+    runProgram(`7 70
 2 2 2 2 2 7 11`);
 } else {
     process.stdin.resume();
